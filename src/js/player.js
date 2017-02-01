@@ -858,6 +858,10 @@ class Player extends Component {
     // Initialize tech instance
     const TechClass = Tech.getTech(techName);
 
+    if (!TechClass) {
+      throw new Error(`No Tech named '${titleTechName}' exists! '${titleTechName}' should be registered using videojs.registerTech()'`);
+    }
+
     this.tech_ = new TechClass(techOptions);
 
     // player.triggerReady is always async, so don't need this to be async
